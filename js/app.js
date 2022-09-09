@@ -26,8 +26,8 @@ let winner, turn
 // Declare deck variables
 let deck1 = []
 let deck2 = []
-let deck3 = []
-let deck4 = []
+// let deck3 = []
+// let deck4 = []
 let cardToRemove
 
 // Cached element references
