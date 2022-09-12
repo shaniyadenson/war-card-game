@@ -49,14 +49,14 @@ function init() {
 // console.log(deck4)
 
 
-function render() {
+// function render() {
   // if (players card is > computer) {
   //   move the two cards to players pile
   // } else if (computer > players card) {
   //   move the two cards to computers pile
   // } else {
   //   return war()
-  }
+  // }
 
 
 
@@ -85,8 +85,8 @@ function handleClick() {
   if (fullDeck.length > 0) {
     
     // Assign card with the random index to a variable
-    let cardPicked1 = fullDeck.splice(shuffledDeck, 1)[0]
-    let cardPicked2 = fullDeck.splice(shuffledDeck, 1)[0]
+    let cardPicked = fullDeck.splice(deck2, 1)[0]
+    let cardPicked2 = fullDeck.splice(deck4, 1)[0]
     // Add card picked to deck 2
     deck1.push(cardPicked1)
     deck3.push(cardPicked2)
@@ -98,8 +98,7 @@ function handleClick() {
 }
 
 // Function to render deck state
-function playerDeck(cardPicked1) {
-
+function render(cardPicked1) {
   // Remove outline class when first card is picked
   if (deck2.length === 1) {
     deck2El.classList.remove('outline')
@@ -116,7 +115,7 @@ function playerDeck(cardPicked1) {
   
 
   // // Adjust shadow when deck gets above/below halfway full
-  if (deck2.length === 26 && deck4.length === 26) {
+  if (deck2.length === 26) {
     deck2El.classList.add('shadow')
     deck1El.classList.remove('shadow')
   
@@ -131,7 +130,9 @@ function playerDeck(cardPicked1) {
 
 }
 
-function computerDeck(cardPicked2) {
+
+
+function render(cardPicked2) {
 if (deck4.length === 1) {
   deck4El.classList.remove('outline')
 }
@@ -162,7 +163,7 @@ if (deck4.length === 26) {
 
 }
 
-
+console.log(cardPicked2)
 
 
 
