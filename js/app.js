@@ -25,9 +25,8 @@ let deck4El = document.getElementById('deck-4')
 
 /*----------------------------- Event Listeners -------------------------*/
 
-resetBtnEl.addEventListener('click', init)
-
 document.querySelector('#flipBtn').addEventListener('click', handleClick)
+resetBtnEl.addEventListener('click', init)
 
 
 /*-------------------------------- Functions ----------------------------*/
@@ -85,13 +84,15 @@ function handleClick() {
   if (fullDeck.length > 0) {
     
     // Assign card with the random index to a variable
-    let cardPicked = fullDeck.splice(deck2, 1)[0]
+    let cardPicked1 = fullDeck.splice(deck2, 1)[0]
     let cardPicked2 = fullDeck.splice(deck4, 1)[0]
     // Add card picked to deck 2
     deck1.push(cardPicked1)
     deck3.push(cardPicked2)
     // Pass card picked to render function to display
-    render()
+    
+    
+    render(cardPicked1 && cardPicked2)
     
     
   }
@@ -154,7 +155,6 @@ function render(cardPicked2) {
 
 }
 
-console.log(cardPicked2)
 
 
 
