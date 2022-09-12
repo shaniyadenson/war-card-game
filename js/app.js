@@ -25,9 +25,10 @@ let deck4El = document.getElementById('deck-4')
 
 /*----------------------------- Event Listeners -------------------------*/
 
-document.querySelector('#flipBtn').addEventListener('click', handleClick)
+// document.querySelector('#flipBtn').addEventListener('click', handleClick)
 resetBtnEl.addEventListener('click', init)
 
+onclick=() => drawCard('human')
 
 /*-------------------------------- Functions ----------------------------*/
 
@@ -92,72 +93,126 @@ function handleClick() {
     // Pass card picked to render function to display
     
     
-    render(cardPicked1 && cardPicked2)
+    
     
     
   }
 }
 
 // Function to render deck state
-function render(cardPicked1) {
-  if (deck2.length === 1) {
-    deck2El.classList.remove('outline')
-  }
-  if (deck2.length > 1) {
-    deck2El.classList.remove(cardToRemove1)
+// function render(cardPicked1) {
+//   if (deck2.length === 1) {
+//     deck2El.classList.remove('outline')
+//   }
+//   if (deck2.length > 1) {
+//     deck2El.classList.remove(cardToRemove1)
 
-  }
+//   }
 
-  cardToRemove1 = cardPicked1
-  deck2El.classList.add(cardPicked1)
+//   cardToRemove1 = cardPicked1
+//   deck2El.classList.add(cardPicked1)
   
-  if (deck2.length === 26) {
-    deck2El.classList.add('shadow')
-    deck1El.classList.remove('shadow')
+//   if (deck2.length === 26) {
+//     deck2El.classList.add('shadow')
+//     deck1El.classList.remove('shadow')
   
-  }
-  // if (deck1.length === 0) {
-  //   deck1El.classList.add('outline')
-  //   deck1El.classList.remove('back-blue')
-  //   deck3El.classList.add('outline')
-  //   deck3El.classList.remove('back-blue')
-  // }
+//   }
+//   // if (deck1.length === 0) {
+//   //   deck1El.classList.add('outline')
+//   //   deck1El.classList.remove('back-blue')
+//   //   deck3El.classList.add('outline')
+//   //   deck3El.classList.remove('back-blue')
+//   // }
 
-}
-
-
-
-function render(cardPicked2) {
-  if (deck4.length === 1) {
-    deck4El.classList.remove('outline')
-  }
-  if (deck4.length) {
-    deck4El.classList.remove(cardToRemove2)
-
-  }
-  cardToRemove2 = cardPicked2
-
-  deck4El.classList.add(cardPicked2)
-
-
-  if (deck4.length === 26) {
-
-    deck4El.classList.add('shadow')
-    deck3El.classList.remove('shadow')
-  }
-  // // Remove card back color and add outline when last card is picked
-// if (deck1.length === 0) {
-//   deck1El.classList.add('outline')
-//   deck1El.classList.remove('back-blue')
-//   deck3El.classList.add('outline')
-//   deck3El.classList.remove('back-blue')
 // }
 
+
+
+// function render(cardPicked2) {
+//   if (deck4.length === 1) {
+//     deck4El.classList.remove('outline')
+//   }
+//   if (deck4.length) {
+//     deck4El.classList.remove(cardToRemove2)
+
+//   }
+//   cardToRemove2 = cardPicked2
+
+//   deck4El.classList.add(cardPicked2)
+
+
+//   if (deck4.length === 26) {
+
+//     deck4El.classList.add('shadow')
+//     deck3El.classList.remove('shadow')
+//   }
+//   // // Remove card back color and add outline when last card is picked
+// // if (deck1.length === 0) {
+// //   deck1El.classList.add('outline')
+// //   deck1El.classList.remove('back-blue')
+// //   deck3El.classList.add('outline')
+// //   deck3El.classList.remove('back-blue')
+// // }
+
+// }
+
+function drawCard(deck) {
+  switch (deck) {
+      case 'human':
+          // code to run on a human click
+          if (deck2.length === 1) {
+            deck2El.classList.remove('outline')
+          }
+          if (deck2.length > 1) {
+            deck2El.classList.remove(cardToRemove1)
+        
+          }
+        
+          cardToRemove1 = deck
+          deck2El.classList.add(deck)
+          
+          if (deck2.length === 26) {
+            deck2El.classList.add('shadow')
+            deck1El.classList.remove('shadow')
+          
+          }
+          drawCard('computer');
+          break;
+      case 'computer':
+          // code to run on a computer click
+          if (deck4.length === 1) {
+            deck4El.classList.remove('outline')
+          }
+          if (deck4.length) {
+            deck4El.classList.remove(cardToRemove2)
+        
+          }
+          cardToRemove2 = deck
+        
+          deck4El.classList.add(deck)
+        
+        
+          if (deck4.length === 26) {
+        
+            deck4El.classList.add('shadow')
+            deck3El.classList.remove('shadow')
+          }
+          break;
+      default:
+          console.warn(`check function drawCard(), got value ${deck} which did not match acceptable values 'human' or 'computer'`);
+  }
 }
 
-
-
-
-
+// function drawCard(deck) {
+//   switch (deck) {
+//       case 'human':
+//           // code to run on a human click
+//       case 'computer':
+//           // code to run on a computer click
+//           break;
+//       default:
+//           console.warn(`check function drawCard(), got value ${deck} which did not match acceptable values 'human' or 'computer'`);
+//   }
+// }
 
 
