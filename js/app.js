@@ -15,15 +15,14 @@ let fullDeck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d
 /*------------------------ Cached Element References --------------------*/
 
 const messageEl = document.querySelector('#message')
-
-
+const resetBtnEl = document.querySelector('#resetBtn')
 
 
 /*----------------------------- Event Listeners -------------------------*/
 
+resetBtnEl.addEventListener('click', init)
 
-
-
+document.querySelector('#flipBtn').addEventListener('click', handleClick)
 
 
 /*-------------------------------- Functions ----------------------------*/
@@ -33,36 +32,90 @@ init()
 
 
 function init() {
-
   shuffledDeck = fullDeck.sort(() => Math.random() - 0.5)
+  
   deck2 = shuffledDeck.slice(0,26)
   deck4 = shuffledDeck.slice(26)
   winner = null
 
   render()
 }
-console.log(deck2)
-console.log(deck4)
+// console.log(deck2)
+// console.log(deck4)
 
 
 function render() {
-  if (!winner) {
-    messageEl.textContent = `Flip a card!`
-  } else if (winner === 'T') {
-    messageEl.textContent = `It's war!!`
-  } else {
-    return getWinner()
+  // if (players card is > computer) {
+  //   move the two cards to players pile
+  // } else if (computer > players card) {
+  //   move the two cards to computers pile
+  // } else {
+  //   return war()
+  }
+
+
+
+//   if (!winner) {
+//     messageEl.textContent = `Flip a card!`
+//   } else if (winner === 'T') {
+//     messageEl.textContent = `It's war!!`
+//   } else {
+//     return getWinner()
+//   }
+// }
+
+// function getWinner () {
+//   if (fullDeck.length is in players pile) {
+//     messageEl.textContent = `You have won the war!!!`
+//   } else {
+//     messageEl.textContent = `You have lost the war!`
+//   }
+// }
+
+function war() {
+
+}
+
+function handleClick() {
+  if (fullDeck.length > 0) {
+    // Randomly select number from total cards remaining
+    
+    // Assign card with the random index to a variable
+    let cardPicked = fullDeck.splice(shuffledDeck, 1)[0]
+    // Add card picked to deck 2
+    deck1.push(cardPicked)
+    // Pass card picked to render function to display
+    render(cardPicked)
   }
 }
 
-function getWinner () {
+// Function to render deck state
+function render(cardPicked) {
+  console.log(cardPicked)
+  // Remove outline class when first card is picked
+  // if (deck2.length === 1) {
+  //   deck2El.classList.remove('outline')
+  // }
+  // // Removes previous picked card from deck 2 class list
+  // if (deck2.length > 1) {
+  //   deck2El.classList.remove(cardToRemove)
+  // }
+
+  // cardToRemove = cardPicked
+  // // Add current card picked to deck 2 element
+  // deck2El.classList.add(cardPicked)
+  // // Adjust shadow when deck gets above/below halfway full
+  // if (deck2.length === 26) {
+  //   deck2El.classList.add('shadow')
+  //   deck1El.classList.remove('shadow')
+  // }
+  // // Remove card back color and add outline when last card is picked
+  // if (deck1.length === 0) {
+  //   deck1El.classList.add('outline')
+  //   deck1El.classList.remove('back-blue')
+  // }
 
 }
-
-
-
-
-
 
 
 
@@ -117,30 +170,3 @@ function getWinner () {
 // }
 
 
-// // Function to render deck state
-// function render(cardPicked) {
-//   console.log(cardPicked)
-//   // Remove outline class when first card is picked
-//   if (deck2.length === 1) {
-//     deck2El.classList.remove('outline')
-//   }
-//   // Removes previous picked card from deck 2 class list
-//   if (deck2.length > 1) {
-//     deck2El.classList.remove(cardToRemove)
-//   }
-
-//   cardToRemove = cardPicked
-//   // Add current card picked to deck 2 element
-//   deck2El.classList.add(cardPicked)
-//   // Adjust shadow when deck gets above/below halfway full
-//   if (deck2.length === 26) {
-//     deck2El.classList.add('shadow')
-//     deck1El.classList.remove('shadow')
-//   }
-//   // Remove card back color and add outline when last card is picked
-//   if (deck1.length === 0) {
-//     deck1El.classList.add('outline')
-//     deck1El.classList.remove('back-blue')
-//   }
-
-// }
