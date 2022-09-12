@@ -15,7 +15,7 @@ const fullDeck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04",
 
 /*------------------------ Cached Element References --------------------*/
 
-
+const messageEl = document.querySelector('#message')
 
 
 
@@ -29,23 +29,31 @@ const fullDeck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04",
 
 /*-------------------------------- Functions ----------------------------*/
 
-init()
+// init()
 
 function init() {
-  shuffled = shuffle(fullDeck)
-  deck2 = shuffled.slice(0,26)
-  winner = null
+//   shuffled = shuffle(fullDeck)
+//   deck2 = shuffled.slice(0,26)
+  winner = 'T'
 
   render()
 }
-console.log()
+// console.log()
 
 
 function render() {
-  
+  if (!winner) {
+    messageEl.textContent = `Flip a card!`
+  } else if (winner === 'T') {
+    messageEl.textContent = `It's war!!`
+  } else {
+    return getWinner()
+  }
 }
 
+function getWinner () {
 
+}
 
 
 
