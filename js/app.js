@@ -49,14 +49,14 @@ function init() {
 // console.log(deck4)
 
 
-// function render() {
+function render() {
   // if (players card is > computer) {
   //   move the two cards to players pile
   // } else if (computer > players card) {
   //   move the two cards to computers pile
   // } else {
   //   return war()
-  // }
+  }
 
 
 
@@ -99,28 +99,22 @@ function handleClick() {
 
 // Function to render deck state
 function render(cardPicked1) {
-  // Remove outline class when first card is picked
   if (deck2.length === 1) {
     deck2El.classList.remove('outline')
   }
-  // // Removes previous picked card from deck 2 class list
   if (deck2.length > 1) {
     deck2El.classList.remove(cardToRemove1)
 
   }
 
   cardToRemove1 = cardPicked1
-  // // Add current card picked to deck 2 element
   deck2El.classList.add(cardPicked1)
   
-
-  // // Adjust shadow when deck gets above/below halfway full
   if (deck2.length === 26) {
     deck2El.classList.add('shadow')
     deck1El.classList.remove('shadow')
   
   }
-  // // Remove card back color and add outline when last card is picked
   // if (deck1.length === 0) {
   //   deck1El.classList.add('outline')
   //   deck1El.classList.remove('back-blue')
@@ -133,27 +127,24 @@ function render(cardPicked1) {
 
 
 function render(cardPicked2) {
-if (deck4.length === 1) {
-  deck4El.classList.remove('outline')
-}
-// // Removes previous picked card from deck 2 class list
-if (deck4.length) {
-  deck4El.classList.remove(cardToRemove2)
+  if (deck4.length === 1) {
+    deck4El.classList.remove('outline')
+  }
+  if (deck4.length) {
+    deck4El.classList.remove(cardToRemove2)
 
-}
-cardToRemove2 = cardPicked2
-// // Add current card picked to deck 2 element
+  }
+  cardToRemove2 = cardPicked2
 
-deck4El.classList.add(cardPicked2)
+  deck4El.classList.add(cardPicked2)
 
 
-// // Adjust shadow when deck gets above/below halfway full
-if (deck4.length === 26) {
+  if (deck4.length === 26) {
 
-  deck4El.classList.add('shadow')
-  deck3El.classList.remove('shadow')
-}
-// // Remove card back color and add outline when last card is picked
+    deck4El.classList.add('shadow')
+    deck3El.classList.remove('shadow')
+  }
+  // // Remove card back color and add outline when last card is picked
 // if (deck1.length === 0) {
 //   deck1El.classList.add('outline')
 //   deck1El.classList.remove('back-blue')
@@ -170,47 +161,3 @@ console.log(cardPicked2)
 
 
 
-// Cached element references
-
-
-// const messageEl = document.querySelector('#message')
-
-// let deck1El = document.getElementById('deck-1')
-// let deck2El = document.getElementById('deck-2')
-// let deck3El = document.getElementById('deck-3')
-// let deck4El = document.getElementById('deck-4')
-
-
-// Event listeners
-// document.getElementById('flipBtn').addEventListener('click', handleClick)
-
-// Functions
-
-
-// Initialize deck 1 with array of 52 cards 
-
-
-// init()
-
-// function init() {
-  
-//   shuffled = Math.floor(Math.random() * fullDeck.length)
-//   deck2 = shuffled.slice(0, 26)
-//   deck4 = shuffled.slice(26)
-//   }
-// console.log(deck2)
-
-// Function to handle a button click:
-// function handleClick() {
-//   if (fullDeck.length > 0) {
-//     // Randomly select number from total cards remaining
-//     let randIdx = Math.floor(Math.random() * fullDeck.length)
-//     // Assign card with the random index to a variable
-//     let cardPicked = fullDeck.splice(randIdx, 1)[0]
-//     // Add card picked to deck 2
-//     deck2.push(cardPicked)
-//     // Pass card picked to render function to display
-//     render(cardPicked)
-//   }
-// }
-// 
