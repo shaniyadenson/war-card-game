@@ -4,10 +4,9 @@ let deck2 = []
 let deck3 = []
 let deck4 = []
 let cardToRemove
-let shuffled
 let winner
 /*-------------------------------- Constants ---------------------------*/
-const fullDeck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
+let fullDeck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
 
 
 
@@ -29,16 +28,21 @@ const messageEl = document.querySelector('#message')
 
 /*-------------------------------- Functions ----------------------------*/
 
-// init()
+init()
+
+
 
 function init() {
-//   shuffled = shuffle(fullDeck)
-//   deck2 = shuffled.slice(0,26)
-  winner = 'T'
+
+  shuffledDeck = fullDeck.sort(() => Math.random() - 0.5)
+  deck2 = shuffledDeck.slice(0,26)
+  deck4 = shuffledDeck.slice(26)
+  winner = null
 
   render()
 }
-// console.log()
+console.log(deck2)
+console.log(deck4)
 
 
 function render() {
