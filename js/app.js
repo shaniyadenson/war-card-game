@@ -17,10 +17,10 @@ let fullDeck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d
 
 const messageEl = document.querySelector('#message')
 const resetBtnEl = document.querySelector('#resetBtn')
-let deck1El = document.getElementById('deck-1')
-let deck2El = document.getElementById('deck-2')
-let deck3El = document.getElementById('deck-3')
-let deck4El = document.getElementById('deck-4')
+let playerDeckEl = document.getElementById('playerDeck')
+let playDeck1El = document.getElementById('playDeck1')
+let computerDeckEl = document.getElementById('computerDeck')
+let playDeck2El = document.getElementById('playDeck2')
 
 
 /*----------------------------- Event Listeners -------------------------*/
@@ -39,8 +39,8 @@ init()
 function init() {
   shuffledDeck = fullDeck.sort(() => Math.random() - 0.5)
   
-  deck2 = shuffledDeck.slice(0,26)
-  deck4 = shuffledDeck.slice(26)
+  playDeck1 = shuffledDeck.slice(0,26)
+  playDeck2 = shuffledDeck.slice(26)
   winner = null
   turn = 1
 
@@ -65,6 +65,7 @@ function render() {
     messageEl.textContent = `Flip a card!`
   } else if (winner === 'T') {
     messageEl.textContent = `It's war!!`
+    return doubleWar()
   } else {
     return getWinner()
   }
@@ -89,8 +90,8 @@ function handleClick() {
     let cardPicked1 = fullDeck.splice(deck2, 1)[0]
     let cardPicked2 = fullDeck.splice(deck4, 1)[0]
     // Add card picked to deck 2
-    deck1.push(cardPicked1)
-    deck3.push(cardPicked2)
+    playerDeck.push(cardPicked1)
+    computerDeck.push(cardPicked2)
     // Pass card picked to render function to display
     renderDeck1(cardPicked1)
     renderDeck2(cardPicked2)
@@ -99,25 +100,25 @@ function handleClick() {
 
 function renderDeck1(cardPicked1) {
   if (playDeck1.length === 1) {
-    deck2El.classList.remove('outline')
+    playDeck1El.classList.remove('outline')
   }
-  if (deck2.length > 1) {
-    deck2El.classList.remove(cardToRemove1)
+  if (playDeck1.length > 1) {
+    playDeck1El.classList.remove(cardToRemove1)
   }
 
   cardToRemove1 = cardPicked1
-  deck2El.classList.add(cardPicked1)
+  playDeck1El.classList.add(cardPicked1)
   
-  if (deck2.length === 26) {
-    deck2El.classList.add('shadow')
-    deck1El.classList.remove('shadow')
+  if (playDeck1.length === 26) {
+    playDeck1El.classList.add('shadow')
+    playerDeckEl.classList.remove('shadow')
   
   }
-  if (deck1.length === 0) {
-    deck1El.classList.add('outline')
-    deck1El.classList.remove('back-blue')
-    deck3El.classList.add('outline')
-    deck3El.classList.remove('back-blue')
+  if (playerDeck.length === 0) {
+    playerDeckEl.classList.add('outline')
+    playerDeckEl.classList.remove('back-blue')
+    computerDeckEl.classList.add('outline')
+    computerDeckEl.classList.remove('back-blue')
   }
 
 }
