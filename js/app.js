@@ -87,8 +87,8 @@ function handleClick() {
   if (fullDeck.length > 0) {
     
     // Assign card with the random index to a variable
-    let cardPicked1 = fullDeck.splice(deck2, 1)[0]
-    let cardPicked2 = fullDeck.splice(deck4, 1)[0]
+    let cardPicked1 = fullDeck.splice(playDeck1, 1)[0]
+    let cardPicked2 = fullDeck.splice(playDeck2, 1)[0]
     // Add card picked to deck 2
     playerDeck.push(cardPicked1)
     computerDeck.push(cardPicked2)
@@ -126,22 +126,22 @@ function renderDeck1(cardPicked1) {
 
 
 function renderDeck2(cardPicked2) {
-  if (deck4.length === 1) {
-    deck4El.classList.remove('outline')
+  if (playDeck2.length === 1) {
+    playDeck2El.classList.remove('outline')
   }
-  if (deck4.length) {
-    deck4El.classList.remove(cardToRemove2)
+  if (playDeck2.length) {
+    playDeck2El.classList.remove(cardToRemove2)
 
   }
   cardToRemove2 = cardPicked2
 
-  deck4El.classList.add(cardPicked2)
+  playDeck2El.classList.add(cardPicked2)
 
 
-  if (deck4.length === 26) {
+  if (playDeck2.length === 26) {
 
-    deck4El.classList.add('shadow')
-    deck3El.classList.remove('shadow')
+    playDeck2El.classList.add('shadow')
+    computerDeckEl.classList.remove('shadow')
   }
   // // Remove card back color and add outline when last card is picked
 // if (deck1.length === 0) {
